@@ -1,0 +1,74 @@
+﻿server:
+  port: 8088
+
+---
+
+spring:
+  profiles: default
+  cloud:
+    gateway:
+      routes:
+        - id: client
+          uri: http://localhost:8081
+          predicates:
+            - Path=/client/**
+        - id: channel
+          uri: http://localhost:8082
+          predicates:
+            - Path=/channel/** 
+        - id: video
+          uri: http://localhost:8083
+          predicates:
+            - Path=/video/**
+        - id: policy
+          uri: http://localhost:8084
+          predicates:
+            - Path=/policy/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+
+---
+
+spring:
+  profiles: docker
+  cloud:
+    gateway:
+      routes:
+        - id: client
+          uri: http://client:8080
+          predicates:
+            - Path=/client/**
+        - id: channel
+          uri: http://channel:8080
+          predicates:
+            - Path=/channel/** 
+        - id: video
+          uri: http://video:8080
+          predicates:
+            - Path=/video/**
+        - id: policy
+          uri: http://policy:8080
+          predicates:
+            - Path=/policy/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+server:
+  port: 8080
