@@ -1,4 +1,4 @@
-﻿server:
+server:
   port: 8088
 
 ---
@@ -26,15 +26,10 @@ spring:
           uri: http://localhost:8084
           predicates:
             - Path=/policyManagements
-        - id: caption
-          uri: http://localhost:8086
-          predicates:
-            - Path=/captionServices
-         - id: membership
+        - id: membership
           uri: http://localhost:8085
           predicates:
             - Path=/membershipServices
-
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -72,10 +67,6 @@ spring:
           uri: http://policy:8080
           predicates:
             - Path=/policyManagements
-        - id: caption
-          uri: http://caption:8080
-          predicates:
-            - Path=/captionServices
         - id: membership
           uri: http://membership:8080
           predicates:
