@@ -26,6 +26,10 @@ spring:
           uri: http://localhost:8084
           predicates:
             - Path=/policyManagements
+        - id: caption
+          uri: http://localhost:8086
+          predicates:
+            - Path=/captionServices
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -63,6 +67,10 @@ spring:
           uri: http://policy:8080
           predicates:
             - Path=/policyManagements
+        - id: caption
+          uri: http://caption:8080
+          predicates:
+            - Path=/captionServices
       globalcors:
         corsConfigurations:
           '[/**]':
