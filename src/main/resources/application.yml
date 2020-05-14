@@ -30,6 +30,11 @@ spring:
           uri: http://localhost:8086
           predicates:
             - Path=/captionServices
+                 - id: membership
+            uri: http://localhost:8085
+            predicates:
+              - Path=/membershipServices
+
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -71,6 +76,10 @@ spring:
           uri: http://caption:8080
           predicates:
             - Path=/captionServices
+                    - id: membership
+            uri: http://membership:8080
+            predicates:
+              - Path=/membershipServices
       globalcors:
         corsConfigurations:
           '[/**]':
